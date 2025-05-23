@@ -128,7 +128,7 @@ describe('Create EKS cluster', { testIsolation: 'off', tags: ['@eksCreate'] }, (
     createEKSClusterPage.getNodeGroup().shouldHaveValue(eksSettings.nodegroupName);
 
     // Check the node role is set to the default role
-    createEKSClusterPage.getNodeRole().checkOptionSelected(eksSettings.nodeRole);
+    createEKSClusterPage.getNodeRole().checkContainsOptionSelected(eksSettings.nodeRole);
 
     // Check the default ASG Sizes
     createEKSClusterPage.getDesiredASGSize().shouldHaveValue(eksSettings.desiredSize);

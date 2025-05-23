@@ -37,7 +37,7 @@ export default class ClusterManagerCreateEKSPagePo extends ClusterManagerCreateR
   }
 
   getRegion() {
-    return new LabeledSelectPo('[data-testid="eks_region"]');
+    return new LabeledSelectPo('.credential-region .region');
   }
 
   getVersion() {
@@ -49,7 +49,7 @@ export default class ClusterManagerCreateEKSPagePo extends ClusterManagerCreateR
   }
 
   getNodeRole() {
-    return new LabeledSelectPo('[data-testid="eks-noderole"]');
+    return new LabeledSelectPo('.col.span-6 .labeled-select');
   }
 
   getLauchTemplate() {
