@@ -18,7 +18,9 @@ jobs:
       issues: write
       id-token: write
     runs-on: ubuntu-latest
-    if: contains(github.event.comment.body, '/automation') || contains(github.event.comment.body, '/ac') || contains(github.event.comment.body, '/automation-candidate') || github.event.label.name == 'candidate-automation'
+    if: |
+      (github.event_name == 'issue_comment' && (contains(github.event.comment.body, '/automation') || contains(github.event.comment.body, '/ac') || contains(github.event.comment.body, '/automation-candidate'))) ||
+      (github.event_name == 'issues' && github.event.label.name == 'candidate-automation')
     steps:
       - name: Read secrets
         uses: rancher-eio/read-vault-secrets@main
