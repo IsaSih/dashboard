@@ -494,7 +494,7 @@ describe('Deploy RKE2 cluster using node driver on Amazon EC2', { tags: ['@manag
     createRKE2ClusterPage.ipv6ConfirmationDialog().find('[data-testid="ipv6-dialog-cancel"]').click();
 
     // verify that setting stack preference to 'IPv6' reintroduces the warning, since dual-stack pools require the 'Dual' preference
-    createRKE2ClusterPage.clusterConfigurationTabs().clickTabWithSelector('#networking');
+    createRKE2ClusterPage.clusterConfigurationTabs().clickTabWithSelector('[data-testid="btn-networking"]');
     createRKE2ClusterPage.networkTab().stackPreference().toggle();
     createRKE2ClusterPage.networkTab().stackPreference().clickOptionWithLabel('IPv6');
     createRKE2ClusterPage.create();
@@ -529,6 +529,7 @@ describe('Deploy RKE2 cluster using node driver on Amazon EC2', { tags: ['@manag
     createRKE2ClusterPage.ipv6ConfirmationDialog().should('be.visible');
     createRKE2ClusterPage.ipv6Recommendations().should('have.length', 2);
     createRKE2ClusterPage.ipv6Recommendations().should('not.contain.text', 'Stack Preference');
+    createRKE2ClusterPage.ipv6Recommendations().should('contain.text', 'Masq');
     createRKE2ClusterPage.ipv6ConfirmationDialog().find('[data-testid="ipv6-dialog-cancel"]').click();
 
     // set cluster/service CIDR and verify that the confirmation modal is updated
@@ -611,7 +612,7 @@ describe('Deploy RKE2 cluster using node driver on Amazon EC2', { tags: ['@manag
     createRKE2ClusterPage.ipv6ConfirmationDialog().find('[data-testid="ipv6-dialog-cancel"]').click();
 
     // verify that setting stack pref to dual does not remove the stack preference warning
-    createRKE2ClusterPage.clusterConfigurationTabs().clickTabWithSelector('#networking');
+    createRKE2ClusterPage.clusterConfigurationTabs().clickTabWithSelector('[data-testid="btn-networking"]');
     createRKE2ClusterPage.networkTab().stackPreference().toggle();
     createRKE2ClusterPage.networkTab().stackPreference().clickOptionWithLabel('Dual');
     createRKE2ClusterPage.create();
