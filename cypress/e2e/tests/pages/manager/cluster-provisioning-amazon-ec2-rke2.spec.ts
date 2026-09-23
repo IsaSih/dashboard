@@ -589,7 +589,7 @@ describe('Deploy RKE2 cluster using node driver on Amazon EC2', { tags: ['@manag
     createRKE2ClusterPage.machinePoolTab().enableDualStack().set();
 
     createRKE2ClusterPage.machinePoolTab().networks().toggle();
-    createRKE2ClusterPage.machinePoolTab().networks().clickOptionWithLabel('ipv6only');
+    createRKE2ClusterPage.machinePoolTab().networks().clickOptionWithLabel('test-vpc-ipv6-ipv6only');
 
     // verify that the enable ipv6 checkbox is automatically set
     createRKE2ClusterPage.machinePoolTab().enableIpv6().isChecked();
