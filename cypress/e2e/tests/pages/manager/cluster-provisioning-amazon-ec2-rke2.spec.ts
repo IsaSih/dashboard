@@ -581,10 +581,10 @@ describe('Deploy RKE2 cluster using node driver on Amazon EC2', { tags: ['@manag
     // set cluster name to enable save button
     createRKE2ClusterPage.nameNsDescription().name().set(this.rke2Ec2ClusterName);
 
-    // set region
+    // set region - must match the AvailabilityZone (us-west-2a) used by the mocked subnets, otherwise none of them render as options
     createRKE2ClusterPage.machinePoolTab().region().toggle();
-    createRKE2ClusterPage.machinePoolTab().region().clickOptionWithLabel('us-west-1');
-    createRKE2ClusterPage.machinePoolTab().region().checkOptionSelected('us-west-1');
+    createRKE2ClusterPage.machinePoolTab().region().clickOptionWithLabel('us-west-2');
+    createRKE2ClusterPage.machinePoolTab().region().checkOptionSelected('us-west-2');
 
     createRKE2ClusterPage.machinePoolTab().enableDualStack().set();
 
